@@ -1,0 +1,372 @@
+/* TODO:
+    Add fallback fonts
+    Detect devices and change download text
+    Animate on scroll
+ */
+
+/* General */
+
+:root {
+    --brand-blue: #5865f2;
+    --brand-blue-2: #404eed;
+    --brand-white: #ffffff;
+    --brand-black: #23272a;
+
+    --padding-mobile: 24px;
+    --padding-small-btn: 7px 16px;
+    --padding-big-btn: 16px 32px;
+
+    --border-radius-btn: 40px;
+
+    --font-ginto-nord: 'Ginto Nord';
+    --font-ginto-normal: 'Ginto Normal';
+    --font-whitney-regular: 'Whitney Regular';
+    --font-whitney-medium-regular: 'Whitney Medium Regular';
+    --font-whitney-semibold-regular: 'Whitney Semibold Regular';
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Ginto Nord';
+    src: url('../fonts/ginto-nord-bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Ginto Normal';
+    src: url('../fonts/ginto-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Whitney Regular';
+    src: url('../fonts/whitney-book-regular.woff') format('woff2');
+}
+
+@font-face {
+    font-family: 'Whitney Medium Regular';
+    src: url('../fonts/whitney-medium-regular.woff') format('woff2');
+}
+
+@font-face {
+    font-family: 'Whitney Semibold Regular';
+    src: url('../fonts/whitney-semibold-regular.woff') format('woff2');
+}
+
+/* // General */
+
+
+/* Global */
+
+body {
+    font-family: 'Whitney Regular';
+    overflow-x: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+.rounded-button {
+    border: none;
+    background-color: var(--brand-white);
+    color: var(--brand-black);
+    padding: var(--padding-small-btn);
+    border-radius: var(--border-radius-btn);
+    font-family: var(--font-whitney-regular);
+    line-height: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.big-btn {
+    font-size: 20px;
+    padding: var(--padding-big-btn);
+}
+
+.black-btn {
+    background-color: var(--brand-black);
+    color: var(--brand-white);
+}
+
+/* // Global */
+
+/* Hero */
+#hero-container {
+    background: var(--brand-blue-2);
+}
+
+#hero-container .logo {
+    color: var(--brand-white);
+}
+
+nav {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: var(--padding-mobile);
+}
+
+nav .nav-right {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.nav-right #open-discord-btn {
+    margin-right: 16px;
+}
+
+.links {
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger {
+    color: var(--brand-white);
+    cursor: pointer;
+}
+
+.hero-content {
+    padding: 56px var(--padding-mobile) 24px var(--padding-mobile);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.hero-content h1 {
+    font-family: var(--font-ginto-nord);
+    font-weight: 800;
+    line-height: 22.8px;
+    text-rendering: geometricprecision;
+    text-transform: uppercase;
+    vertical-align: baseline;
+    color: var(--brand-white);
+}
+
+.hero-content p {
+    margin-top: 24px;
+    line-height: 26px;
+    text-rendering: geometricprecision;
+    color: var(--brand-white);
+    font-size: 16px;
+}
+
+.hero-content .cta-buttons {
+    margin-top: 20px;
+    gap: 24px;
+}
+
+.hero-content .cta-buttons button {
+    display: inline-block;
+    margin-top: 24px;
+}
+
+.hero-content .cta-buttons button span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.hero-content .cta-buttons button:nth-child(1) {
+    margin-right: 24px;
+}
+
+
+#hero-container #illustrations {
+    padding: var(--padding-mobile) var(--padding-mobile) 0 var(--padding-mobile);
+    display: flex;
+    justify-content: start;
+}
+
+#hero-container #illustrations img#left {
+    width: 100%;
+    margin: 0 0 0 -80px;
+}
+
+#hero-container #illustrations img#right, #hero-container #illustrations img#bg {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    #hero-container {
+        position: relative;
+    }
+
+    .links {
+        display: none;
+    }
+
+    .nav-right .hamburger {
+        display: inline-block;
+    }
+
+    .hero-content {
+        z-index: 10;
+        padding-bottom: 120px;
+    }
+
+    .hero-content > div {
+        z-index: 10;
+    }
+
+    .hero-content h1 {
+        font-size: 56px;
+        max-width: 60%;
+        line-height: 56px;
+    }
+
+    .hero-content p {
+        max-width: 60%;
+    }
+
+    .hero-content .cta-buttons {
+        max-width: 50%;
+    }
+
+    #hero-container #illustrations {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: unset;
+        justify-content: unset;
+    }
+
+    #hero-container #illustrations img#left {
+        display: none;
+    }
+
+    #hero-container #illustrations img#right {
+        display: block;
+        position: absolute;
+        right: -10%;
+        bottom: 0;
+        margin-left: -70px;
+        width: 60%;
+        max-width: 620px;
+        z-index: 6;
+    }
+
+    #hero-container #illustrations img#bg {
+        display: block;
+        position: absolute;
+        margin-left: -1320px;
+        bottom: 0;
+        z-index: 1;
+        left: 75%;;
+        height: 550px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #hero-container {
+        position: relative;
+    }
+
+    .links {
+        display: flex;
+        gap: 24px;
+    }
+
+    .links a {
+        color: var(--brand-white);
+        text-decoration: none;
+    }
+
+    .links a:hover {
+        text-decoration: underline;
+    }
+
+    .nav-right .hamburger {
+        display: none;
+    }
+
+    .hero-content {
+        margin: 0 auto 0 auto;
+        padding: 120px 0;
+        display: flex;
+        align-items: center;
+        z-index: 10;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-content > div {
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-content > div h1 {
+        font-size: 56px;
+        max-width: 50%;
+        line-height: 56px;
+    }
+
+    .hero-content > div p {
+        margin-top: 40px;
+        max-width: 50%;
+        font-size: 20px;
+    }
+
+    #hero-container #illustrations {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: unset;
+        justify-content: unset;
+    }
+
+    #hero-container #illustrations img {
+        position: absolute;
+        display: block;
+    }
+
+    #hero-container #illustrations img#left {
+        display: block;
+        margin: 0;
+        z-index: 2;
+        bottom: 0;
+        left: 50%;
+        height: auto;
+        width: auto;
+        margin-left: -1030px;
+    }
+
+    #hero-container #illustrations img#right {
+        margin: 0;
+        z-index: 2;
+        bottom: 0;
+        left: 50%;
+        height: auto;
+        width: auto;
+        margin-left: 370px;
+    }
+
+    #hero-container #illustrations img#bg {
+        margin-left: -1280px;
+        bottom: 0;
+        left: 50%;
+        z-index: 1;
+    }
+}
+
+
+/* // Hero */
