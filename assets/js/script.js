@@ -62,9 +62,54 @@ function setUpAnimationOnScroll() {
     });
 }
 
+function setUpOSDetection() {
+    const userAgent = window.navigator?.userAgent;
+    const platform = window.navigator?.userAgentData?.platform || window.navigator.platform;
+    const mac = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'];
+    const windows = ['Win32', 'Win64', 'Windows', 'WinCE'];
+    const ios = ['iPhone', 'iPad', 'iPod'];
+
+    let os = null;
+    let isMobile = false;
+
+    if (mac.indexOf(platform) !== -1) {
+        os = 'Mac';
+    } else if (ios.indexOf(platform) !== -1) {
+        os = 'iOS';
+        isMobile = true;
+    } else if (windows.indexOf(platform) !== -1) {
+        os = 'Windows';
+    } else if (/Android/.test(userAgent)) {
+        os = 'Android';
+        isMobile = true;
+    } else if (/Linux/.test(platform)) {
+        os = 'Linux';
+    }
+
+    const platformElements = document.querySelectorAll('[data-download-platform]');
+
+    platformElements.forEach(element => {
+        let text = "";
+
+        if(isMobile) {
+            if(os === "Android") {
+                text = "Download from Google Play";
+            } else if(os === "iOS") {
+                text = "Download from App Store";
+            }
+        } else {
+            text = `Download for ${os}`;
+        }
+
+        element.textContent = text;
+    })
+
+}
+
 function main() {
     setUpMobileMenu();
     setUpAnimationOnScroll();
+    setUpOSDetection();
 }
 
 document.addEventListener("DOMContentLoaded", main);
