@@ -104,6 +104,17 @@ body {
     color: var(--brand-white);
 }
 
+.fadeIn {
+    opacity: 1 !important;
+    transform: translateY(0px) !important;
+}
+
+.fadeIn-setup {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: transform 1s, opacity 
+}
+
 /* // Global */
 
 /* Hero */
